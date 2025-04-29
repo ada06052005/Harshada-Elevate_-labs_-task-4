@@ -1,0 +1,78 @@
+1. How does logistic regression differ from linear regression?
+Linear Regression is used for predicting continuous numerical values (e.g., house prices, temperature). It fits a line to the data points in such a way that minimizes the error between predicted and actual values.
+Logistic Regression is used for binary classification problems (e.g., whether an email is spam or not). It predicts the probability of the binary outcome using a logistic (sigmoid) function, which outputs values between 0 and 1, suitable for classifying observations into two classes (0 or 1).
+
+2. What is the sigmoid function?
+The sigmoid function is a mathematical function that maps any input to a value between 0 and 1. It is defined as:
+σ(x) = 1 / (1 + e^(-x))
+ In logistic regression, the sigmoid function is used to convert the linear output of the model into a probability that is interpreted as the likelihood of the positive class (1).
+
+3. What is precision vs recall?
+Precision: The proportion of true positives (correctly predicted positive cases) among all the positive predictions made by the model. It answers: "Out of all the positive predictions made, how many were actually correct?"
+Precision = TP / (TP + FP): Of all predicted positives, how many were actually positive?
+Recall = TP / (TP + FN): Of all actual positives, how many were correctly predicted?
+Precision is about quality of positives, recall is about coverage of actual positives.
+
+4. What is the ROC-AUC curve?
+ROC Curve (Receiver Operating Characteristic Curve) is a graphical representation of a model's ability to distinguish between the positive and negative classes across various thresholds. The x-axis shows the False Positive Rate (FPR), and the y-axis shows the True Positive Rate (TPR or Recall).
+AUC (Area Under the Curve) measures the overall performance of the classifier. An AUC of 1 means perfect classification, and an AUC of 0.5 means no better than random guessing.
+
+5. What is the confusion matrix?
+A confusion matrix is a table used to evaluate the performance of a classification model. It shows the number of:
+True Positives (TP): Correctly predicted positive cases.
+True Negatives (TN): Correctly predicted negative cases.
+False Positives (FP): Incorrectly predicted as positive.
+False Negatives (FN): Incorrectly predicted as negative.
+The matrix is structured as follows:
+
+Predicted Positive
+Predicted Negative
+Actual Positive
+𝑇
+𝑃
+𝐹
+𝑁
+Actual Negative
+𝐹
+𝑃
+𝑇
+𝑁
+Actual Positive
+Actual Negative
+​
+  
+Predicted Positive
+TP
+FP
+​
+  
+Predicted Negative
+FN
+TN
+​
+ 
+​
+ 
+6. What happens if classes are imbalanced?
+If classes are imbalanced (i.e., one class is significantly more frequent than the other), the model may become biased toward the majority class. This can lead to poor performance, particularly for the minority class. Common techniques to handle imbalanced classes include:
+
+Resampling (either oversampling the minority class or undersampling the majority class).
+
+Using weighted loss functions to penalize the model more for misclassifying the minority class.
+
+Generating synthetic data using methods like SMOTE (Synthetic Minority Over-sampling Technique).
+
+7. How do you choose the threshold?
+The threshold is the value above which the predicted probability is classified as the positive class (1) and below which it is classified as the negative class (0). A common default threshold is 0.5. However, depending on the application, you might choose a different threshold to optimize for precision, recall, or another metric. This can be done by:
+
+Plotting the Precision-Recall Curve or ROC Curve and choosing the threshold that best balances the metrics you care about.
+
+Using domain knowledge (e.g., you might want to reduce false negatives even at the cost of more false positives).
+
+8. Can logistic regression be used for multi-class problems?
+Yes, logistic regression can be extended to multi-class classification problems using techniques like:
+
+One-vs-Rest (OvR): In this approach, multiple binary classifiers are trained, each distinguishing one class from all others.
+
+Multinomial Logistic Regression (Softmax Regression): This approach directly generalizes logistic regression to multi-class problems by using the softmax function instead of the sigmoid function.
+
